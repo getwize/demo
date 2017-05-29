@@ -1,0 +1,2 @@
+module StudentSubscriptionsHelper
+end

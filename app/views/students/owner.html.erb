@@ -1,0 +1,32 @@
+
+<h4 class="title">Students</h4>
+
+<%= link_to 'Add student plans ',new_student_plan_path, class: "btn btn-primary" %>
+<%= link_to '<i class="material-icons">person_add</i> New Student'.html_safe, new_student_path, class: "btn btn-primary" %>
+
+<table class="table">
+  <thead class="text-primary">
+    <tr>
+      <th>First Name</th>
+      <th>Last Name</th>
+      <th>Email</th>
+      <th>Phone</th>
+      <th>Actions</th>
+    </tr>
+  </thead>
+  <tbody>
+    <% @students.each do |student| %>
+    <tr>
+      <td><%= student.first_name %></td>
+      <td><%= student.last_name %></td>
+      <td><%= student.email %></td>
+      <td><%= student.phone_number %></td>
+      <td class="td-actions text-right">
+       <%= link_to '<i class="material-icons">person</i>'.html_safe, student, class: "btn btn-info btn-simple" %>
+       <%= link_to '<i class="material-icons">edit</i>'.html_safe, edit_student_path(student), class: "btn btn-success btn-simple" %>
+       <%= link_to '<i class="material-icons">close</i>'.html_safe, student, method: :delete, data: { confirm: 'Are you sure?' }, class: "btn btn-danger btn-simple" %>
+     </td>
+   </tr>
+   <% end %>
+ </tbody>
+</table>

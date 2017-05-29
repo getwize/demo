@@ -1,0 +1,2 @@
+module StudentPlansHelper
+end

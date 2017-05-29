@@ -1,0 +1,13 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  coup_id: MyString
+  duration: MyString
+  duration_in_months: 1
+  amount_off: 1
+
+two:
+  coup_id: MyString
+  duration: MyString
+  duration_in_months: 1
+  amount_off: 1

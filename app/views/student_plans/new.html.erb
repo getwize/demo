@@ -1,0 +1,31 @@
+<h2>Create your Plans</h2>
+
+<%=form_for :plan, url: student_plans_path do|f|%>
+	<div class="field">
+	    <%= f.label :amount %><br />
+	    <%= f.number_field :amount, autofocus: true %> use (6000)
+	</div>
+
+	<div class="field">
+	    <%= f.label :interval %><br /> 
+	    <%= f.text_field :interval, autofocus: true %>use (day,week,month,year)
+	</div>
+	<div class="field">
+	    <%= f.label :name %><br />
+	    <%= f.text_field :name, autofocus: true %>use (silver) 
+	</div>
+
+	<div class="field">
+	    <%= f.label :currency %><br />
+	    <%= f.text_field :currency, autofocus: true %>use (usd)
+	</div>
+
+	<div class="field">
+	    <%= f.label :Planid %><br />
+	    <%= f.text_field :stripe_id, autofocus: true %>silver (similar to name)
+	</div><br>
+
+	<div class="actions">
+    	<%= f.submit "Create plan" %>
+ 	</div>
+<%end%>

@@ -1,0 +1,25 @@
+<%=@user.email%>
+<%= form_tag charges_path do %>
+  <article>
+    <% if flash[:error].present? %>
+      <div id="error_explanation">
+        <p><%= flash[:error] %></p>
+      </div>
+    <% end %>
+
+    <p>
+      <span>Subscription to <%=@plan.name%> plan</span>
+      </p>
+
+    <label class="amount">
+      <span>Amount: $<%=@plan.amount/100%>.00</span>
+    </label>
+  </article>
+
+  <script src="https://checkout.stripe.com/checkout.js" class="stripe-button"
+          data-key="<%= Rails.configuration.stripe[:publishable_key] %>"
+          data-description="A month's subscription"
+          data-email= "<%=@user.email%>"
+          data-amount="<%@plan.amount%>"
+          data-locale="auto"></script>
+<% end %>

@@ -1,0 +1,33 @@
+<h2>Create your coupons</h2>
+
+<%=form_for :coupon, url: student_subscription_discounts_path do|f|%>
+	<div class="field">
+	    <%= f.label :coupon_name %><br />
+	    <%= f.text_field :coup_id, autofocus: true %> e.g. deals
+	</div>
+
+	<div class="field">
+	    <%= f.label :duration %><br /> 
+	    <%= f.text_field :duration, autofocus: true %>use (forever,once,repeating)
+	</div>
+
+	<div class="field">
+	    <%= f.label :currency %><br />
+	    <%= f.text_field :currency, autofocus: true %>use (usd)
+	</div>
+
+	<div class="field">
+	    <%= f.label :duration_in_months %><br />
+	    <%= f.number_field :duration_in_months, autofocus: true %>
+	</div>
+
+
+	<div class="field">
+	    <%= f.label :amount_off %><br />
+	    <%= f.number_field :amount_off, autofocus: true %>use (100)
+	</div>
+
+	<div class="actions">
+    	<%= f.submit "Create coupon" %>
+ 	</div>
+<%end%>

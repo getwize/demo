@@ -1,0 +1,91 @@
+
+
+<%= render 'form', student: @student %>
+<%= link_to 'Create student plans', student_plans_new_path%>
+
+<%=form_for :connect, url: user_stripe_connect_omniauth_authorize_path do |f| %>
+<%= f.submit "connect to stripe", class: "btn btn-primary" %>
+<%end%>
+
+
+<%= form_tag student_subscription_path , method: "put" do %>
+
+<article>
+	<% if flash[:error].present? %>
+	<div id="error_explanation">
+		<p><%= flash[:error] %></p>
+	</div>
+	<% end %>
+	<label class="amount">
+		<span>Amount: $<%=@plan.amount/100%>.00</span>
+	</label>
+</article>
+
+<script src="https://checkout.stripe.com/checkout.js" class="stripe-button"
+data-key="<%= @publishable_key %>"
+data-description="A month's subscription"
+data-amount= "<%@plan.amount%>"
+data-email= "<%=@student.email%>"
+data-panel-label = "pay"
+data-label= "subscribe student"
+data-locale="auto"></script>
+<% end %>
+
+<div class="actions">
+	<%= button_to "cancel Subscription",student_subscription_path, :method=>'delete' %> 
+</div>
+
+
+<%= form_for :splan, url: student_subscription_path,  method: "put" do |f| %>
+<div class="actions">
+	<%= f.submit "Reactivate" %>
+</div>
+<% end %> 
+
+
+
+
+
+<%= link_to "create a discount",new_student_subscription_discount_path %> 
+
+
+<%= form_for :discount, url: student_subscription_discount_path, :method=>'put' do |f| %>
+<div class="">
+	<%= f.label 'Choose discount' %>
+	<%= f.collection_select(:coup_id, Coupon.where(user: current_user),:id,:coup_id) %>
+</div>
+<div class="actions">
+	<%= f.submit "claim discount" %>
+</div>
+<% end %> 
+
+
+<%= form_for :date, url: billing_path, :method=>'put' do |f| %>
+<div class="">
+	<%= f.label :date %> <%= f.date_select(:date, :order => [:month, :day, :year]) %>
+</div>
+<div class="actions">
+	<%= f.submit "change billing cycle" %>
+</div>
+<% end %> 
+
+<%= form_tag student_charge_path , method: "put" do %>
+<article>
+	<% if flash[:error].present? %>
+	<div id="error_explanation">
+		<p><%= flash[:error] %></p>
+	</div>
+	<% end %>
+	<label class="amount">
+
+	</label>
+</article>
+
+<script src="https://checkout.stripe.com/checkout.js" class="stripe-button"
+data-key="<%= @publishable_key %>"
+data-description="Update card details"
+data-label= "update Card Details"
+data-email= "<%=@student.email%>"
+data-panel-label = "update Card Details"
+data-locale="auto"></script>
+<% end %>

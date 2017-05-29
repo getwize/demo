@@ -1,0 +1,35 @@
+
+Creating Plans
+-----------------
+
+All plans are defined in app/services/create_plan_services.rb
+
+Step 1
+------
+
+Create plans in your stripe account first 
+
+Step 2
+------
+
+Take note of each plan's amount ,interval and stripe_id(name)
+
+Step 3
+------
+
+Replace the values in the app/services/create_plan_services.rb with the values of the plans you created in the stripe account
+
+Step 4
+------
+
+rails db:migrate
+
+
+All your keys are placed in the config/application.yml
+
+
+
+####### GOOD LUCK ########
+
+
+
