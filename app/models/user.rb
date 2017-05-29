@@ -3,7 +3,7 @@ class User < ApplicationRecord
   # :confirmable, :lockable, :timeoutable and :omniauthable
   
   #highlights the various roles,you can change as needed
-  enum role: [:user, :admin, :silver, :gold, :platinum]
+  enum role: [:user, :admin, :lite, :basic, :pro]
 
   devise :database_authenticatable, :registerable,:omniauthable,
   :recoverable, :rememberable, :trackable, :validatable
