@@ -7,6 +7,8 @@ Devise.setup do |config|
   # Devise will use the `secret_key_base` as its `secret_key`
   # by default. You can change it below and use your own secret key.
   # config.secret_key = '2ee30fa80681c95a97f8d7b6906bf69547d2544e30d0e01c5fee76f78a66185c364d3863ad6bfed1419df598d65a2474c33c98c8f6f60d3f6f6628d708e4e67c'
+  config.secret_key = '1dc4ad8dc4cc55d0e12d0e2b50ac0b4d37da86d81e5037ed577fa42ecb42172cf15fd568237aa4222eed7506ccd0d41b640b1cf26eaf8b99acc804bed453444f'
+  
   if Rails.env.production?
 
   config.omniauth :stripe_connect,
